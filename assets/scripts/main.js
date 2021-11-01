@@ -84,4 +84,24 @@ function bindShowMore() {
   // in the recipeData object where you stored them/
 
   // Part 2 Explore - TODO
+  var button = document.querySelector('button');
+  button.addEventListener('click', event =>{
+    if(button.textContent == 'Show more'){
+      for(let i = 3; i < count; i++){
+        let card = document.createElement("recipe-card");
+        card.setAttribute('id', i);
+        card.data = recipeData[recipes[i]];
+        const main = document.querySelector('main');
+        main.appendChild(card);
+      }
+      button.textContent = 'Show less';
+    }
+    else{
+      for(let i = 3; i < count; i++){
+        const card = document.getElementById(i);
+        card.remove();
+      }
+      button.textContent = 'Show more';
+    }
+  });
 }
