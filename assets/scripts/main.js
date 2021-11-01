@@ -74,7 +74,7 @@ function createRecipeCards() {
     var card = document.createElement('recipe-card');
     card.id = 'card' + i;
     card.data = recipeData[recipes[i]];
-    document.querySelector('main').appendChild(card);
+    document.getElementsByTagName('main')[0].appendChild(card);
   }
 }
 
@@ -87,25 +87,30 @@ function bindShowMore() {
   // in the recipeData object where you stored them/
 
   // Part 2 Explore - TODO
-
-  // var button = document.querySelector('button');
-  // let clicks = 0;
-  // button.addEventListener('click', function(){
-  //   let main = document.querySelector('main');
-  //   if(clicks%2==0){
-  //     for(let i = 3; i < 6; i++){
-  //       let card = document.createElement('recipe-card');
-  //       card.data = recipeData[recipes[i]];
-  //       main.append(card);
-    
-  //       button.innerHTML = "Show less";
-  //     }
-  //   }
-  //   else {
-  //     main.innerHTML='';
-  //     button.innerHTML = "Show more";
-  //     createRecipeCards();
-  //   }
-  //   clicks++;
-  // });
+  var button = document.getElementsByTagName('button')[0];
+  var clickTime = 0;
+  var removeList = [];
+  button.addEventListener('click', click);
+  function click() {
+    if(clickTime % 2 == 0){
+      for(var i = 3; i < recipes.length; i++){
+        var card = document.createElement('recipe-card');
+        card.id = 'card' + i;
+        card.data = recipeData[recipes[i]];
+        removeList.push(card.id);
+        document.getElementsByTagName('main')[0].append(card);
+        button.innerText = "Show less";
+      }
+      clickTime++;
+    }
+    else {
+      for(var i = 0; i < removeList.length; i++) {
+        // console.log(document.getElementById(removeList[i]));
+        document.getElementsByTagName('main')[0].removeChild(document.getElementById(removeList[i]));
+      }
+      removeList = [];
+      button.innerText = "Show more";
+      clickTime++;
+    }
+  }
 }
