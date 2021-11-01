@@ -5,10 +5,10 @@
 const recipes = [
   'https://introweb.tech/assets/json/ghostCookies.json',
   'https://introweb.tech/assets/json/birthdayCake.json',
-  'https://introweb.tech/assets/json/chocolateChip.json'//,
-  // 'assets/recipes/Hamburger.json',
-  // 'assets/recipes/RicePudding.json',
-  // 'assets/recipes/Spaghetti.json'
+  'https://introweb.tech/assets/json/chocolateChip.json',
+  'assets/recipes/Hamburger.json',
+  'assets/recipes/RicePudding.json',
+  'assets/recipes/Spaghetti.json'
 ];
 
 // Once all of the recipes that were specified above have been fetched, their
@@ -70,7 +70,7 @@ function createRecipeCards() {
   // show any others you've added when the user clicks on the "Show more" button.
 
   // Part 1 Expose - TODO
-  for(var i = 0; i < recipes.length; i++){
+  for(var i = 0; i < 3; i++){
     var card = document.createElement('recipe-card');
     card.id = 'card' + i;
     card.data = recipeData[recipes[i]];
