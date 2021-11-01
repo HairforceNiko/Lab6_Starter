@@ -2,8 +2,8 @@ class RecipeCard extends HTMLElement {
   constructor() {
     // Part 1 Expose - TODO
     super();
-    let shadow = this.attachShadow({mode: 'open'});
     // You'll want to attach the shadow DOM here
+    let shadow = this.attachShadow({mode: 'open'});
   }
 
   set data(data) {
@@ -125,14 +125,12 @@ class RecipeCard extends HTMLElement {
     var rating = document.createElement('div');
     rating.className = 'rating';
     var rating_span = document.createElement('span');
-    var rating_num = searchForKey(data, 'ratingValue');
-    
+    var rating_num = searchForKey(data, 'ratingValue');  
     if(rating_num == null){
       rating_span.innerText = 'No reviews';
     } else {
       rating_span.innerText = rating_num;
     }
-
     var star = document.createElement('img');
     if(rating_num > 0 && rating_num < 0.5){
       star.src = 'assets/images/icons/0-star.svg';
@@ -153,7 +151,6 @@ class RecipeCard extends HTMLElement {
       star.src = 'assets/images/icons/5-star.svg';
       star.alt = '5 stars';
     }
-
     var review_num = document.createElement('span');
     if(rating_num != null) {
       review_num.innerText = searchForKey(data, 'ratingCount');
